@@ -14,7 +14,7 @@ sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
 #### 2.1.1 输出每个类的词频
 &emsp;&emsp;用MapReduce对文本进行分词、计数处理，输出的键值对<word,[positive#appearance_num,neutral#appearance_number,negative#appearance_number]>
 #### 2.1.2 利用ID3方法得到每个词的信息增益
-&emsp;&emsp;根据信息增益公式，Gain(D,具体类别)=划分前的信息墒-划分后的信息墒，由于划分前的信息墒都是相同的，只需要计算并比较划分后的信息墒的大小即可  
+&emsp;&emsp;根据信息增益公式，Gain(D,具体类别)=划分前的信息墒-划分后的信息墒，由于划分前的信息墒都是相同的，只需要计算并比较划分后的信息墒的大小即可  
 &emsp;&emsp;根据1.1中输出的键值对，可以构造以下格式计算划分后的信息墒
 ![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
 &emsp;&emsp;对于每个word而言，划分后的信息墒）=（positive出现文本次数+neutral出现文本次数+negative出现文本次数）/文本总数 * I（positive出现文本次数，neutral出现文本次数，negative出现文本次数）+（总文本数-positive出现文本次数-neutral出现文本次数-negative出现文本次数）/总文本数 * I（positive文本数-positive出现文本次数，neutral文本数-neutral出现文本次数，negative文本数-negative出现文本次数）  
