@@ -21,7 +21,7 @@ sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
 &emsp;&emsp;其中，I（x，y，z）= -x/(x+y+z) * log(x/(x+y+z))/log(2)-y/(x+y+z) * log(y/(x+y+z))/log(2)-z/(x+y+z) * log(z/(x+y+z))/log(2)  
 &emsp;&emsp;在ID3方法中，信息增益大的属性更为重要，信息增益=划分前的信息墒-划分后的信息墒，划分后的信息墒为正，所以当只比较划分后的信息墒时，数值越小的word越重要  
 &emsp;&emsp;截图如下（截图中算的是信息增益，但后来觉得划分前的信息墒都相同，所以只计算划分后的信息墒的方法更简洁）  
-![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
+![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
 &emsp;&emsp;筛选前1000个word作为每一个文本的属性，即构建一个1000的向量
 #### 2.1.3 利用TF-IDF方法计算每一维的权重
 &emsp;&emsp;对于每一个文本的每一维而言，其权重为
