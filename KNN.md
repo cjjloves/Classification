@@ -17,10 +17,10 @@ sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
 &emsp;&emsp;根据信息增益公式，Gain(D,具体类别)=划分前的信息墒-划分后的信息墒，由于划分前的信息墒都是相同的，只需要计算并比较划分后的信息墒的大小即可  
 &emsp;&emsp;根据1.1中输出的键值对，可以构造以下格式计算划分后的信息墒
 ![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
-&emsp;&emsp;对于每个word而言，划分后的信息墒）=（positive出现文本次数+neutral出现文本次数+negative出现文本次数）/文本总数 * I（positive出现文本次数，neutral出现文本次数，negative出现文本次数）+（总文本数-positive出现文本次数-neutral出现文本次数-negative出现文本次数）/总文本数 * I（positive文本数-positive出现文本次数，neutral文本数-neutral出现文本次数，negative文本数-negative出现文本次数）  
-&emsp;&emsp;其中，I（x，y，z）= -x/(x+y+z) * log(x/(x+y+z))/log(2)-y/(x+y+z) * log(y/(x+y+z))/log(2)-z/(x+y+z) * log(z/(x+y+z))/log(2)  
-&emsp;&emsp;在ID3方法中，信息增益大的属性更为重要，信息增益=划分前的信息墒-划分后的信息墒，划分后的信息墒为正，所以当只比较划分后的信息墒时，数值越小的word越重要  
-&emsp;&emsp;截图如下（截图中算的是信息增益，但后来觉得划分前的信息墒都相同，所以只计算划分后的信息墒的方法更简洁）
+&emsp;&emsp;对于每个word而言，划分后的信息墒）=（positive出现文本次数+neutral出现文本次数+negative出现文本次数）/文本总数 * I（positive出现文本次数，neutral出现文本次数，negative出现文本次数）+（总文本数-positive出现文本次数-neutral出现文本次数-negative出现文本次数）/总文本数 * I（positive文本数-positive出现文本次数，neutral文本数-neutral出现文本次数，negative文本数-negative出现文本次数）  
+&emsp;&emsp;其中，I（x，y，z）= -x/(x+y+z) * log(x/(x+y+z))/log(2)-y/(x+y+z) * log(y/(x+y+z))/log(2)-z/(x+y+z) * log(z/(x+y+z))/log(2)  
+&emsp;&emsp;在ID3方法中，信息增益大的属性更为重要，信息增益=划分前的信息墒-划分后的信息墒，划分后的信息墒为正，所以当只比较划分后的信息墒时，数值越小的word越重要  
+&emsp;&emsp;截图如下（截图中算的是信息增益，但后来觉得划分前的信息墒都相同，所以只计算划分后的信息墒的方法更简洁）  
 ![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
 &emsp;&emsp;筛选前1000个word作为每一个文本的属性，即构建一个1000的向量
 #### 2.1.3 利用TF-IDF方法计算每一维的权重
