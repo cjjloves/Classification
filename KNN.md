@@ -1,4 +1,15 @@
-# 文本向量化
+# KNN实现
+## 训练集数据前处理
+训练集数据转码处理  
+```
+byte[] valueBytes = value.getBytes();
+String sentence = new String(valueBytes, "GBK");
+```
+训练集数据保留中文处理，防止分词过程中出现不明符号
+```
+sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
+```
+## 文本向量化
 ## 1 特征选择——ID3方法
 ### 1.1 输出每个类的词频
 用MapReduce对文本进行分词、计数处理，输出的键值对<word,[positive#appearance_num,neutral#appearance_number,negative#appearance_number]>
@@ -24,3 +35,7 @@ W=词频 * log(所有文本个数/该词出现文本的个数 + 0.01)，其中�
 ### 1.4 对测试文本的前处理
 在对测试文本处理的过程中，发现其因为篇幅短小的原因，造成含有的词数较小，导致在1000维上的数值有很大可能性全为0  
 所以，我将同一个公司的所有新闻标题内容合并，当作一篇新闻处理
+## 测试集文本分类
+利用MapReduce读取测试集上的向量文本，将训练集上的向量文本存入DistributedCache中。对测试集上的每一个向量文本，计算其到所有训练向量文本上的欧氏距离（我用的是每一维的平方差之和），取距离最小的前20个向量文本，得到20个类别属性，统计并比较类别的数量，得到20条类别属性中出现次数最多的类别属性。输出键值对<[测试集文本公司编号 公司名称],类别>
+![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG) 
+测试集类别的近似分布为：positive(5%)、neutral(90%)、negative(5%)。对此的合理解释是：因为将属于同一公司的新闻标题合并，作为一条新闻内容，所以这些新闻所含的表示积极或消极含义的词的比例是相似的，总体上说偏向于中立
