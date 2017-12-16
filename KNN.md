@@ -24,14 +24,14 @@ sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
 ![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
 &emsp;&emsp;筛选前1000个word作为每一个文本的属性，即构建一个1000的向量
 #### 2.1.3 利用TF-IDF方法计算每一维的权重
-&emsp;&emsp;对于每一个文本的每一维而言，其权重为
-&emsp;&emsp;W=词频 * log(所有文本个数/该词出现文本的个数 + 0.01)，其中，词频 = 该词在该文本出现的次数/该文本总词数  
-&emsp;&emsp;该权重公式中，词频（TF）因文本而异，而log(所有文本个数/该词出现文本的个数 + 0.01)（IDF）则是固定的  
-&emsp;&emsp;所以可以通过MapReduce,利用1.1中输出的键值对<word,[positive#appearance_num,neutral#appearance_number,negative#appearance_number]>，筛选符合的1000个词，计算出1000个词的IDF，输出<word,word_IDF>键值对  
+&emsp;&emsp;对于每一个文本的每一维而言，其权重为  
+&emsp;&emsp;W=词频 * log(所有文本个数/该词出现文本的个数 + 0.01)，其中，词频 = 该词在该文本出现的次数/该文本总词数  
+&emsp;&emsp;该权重公式中，词频（TF）因文本而异，而log(所有文本个数/该词出现文本的个数 + 0.01)（IDF）则是固定的  
+&emsp;&emsp;所以可以通过MapReduce,利用1.1中输出的键值对<word,[positive#appearance_num,neutral#appearance_number,negative#appearance_number]>，筛选符合的1000个词，计算出1000个词的IDF，输出<word,word_IDF>键值对  
 &emsp;&emsp;然后，利用MapReduce读取训练集上所有文本，将前一步中得到的<word,word_IDF>键值对存入DistributedCache中供所有节点读取，在Map中建立一个1000维的初始值全为0的数组和一个计数符，1000维数组用于记录该文本中对于1000个词的词频，计数符用于记录该文本中的总词数。具体做法是，将分出的每一个词与&emsp;&emsp;DistributedCache中的word值比较，若DistributedCache中存在该词，则在1000维数组相应的项中的数加一，否则不改动数组值。在对所有词遍历完毕后，将1000维数组的值都除以计数符得到每一维的词频，并将其放入一个String类型中，每一维数值之间以逗号分隔。Map最终输出键值对<[类型  文本号]，1000维度权值>  
-![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
-&emsp;&emsp;后续处理：在最终的测试文本与训练文本比较的过程中，因为训练文本中的某些文本在1000维上的数值都为0，影响分类效果，所以将1000维上数值都为0的训练文本删除  
-&emsp;&emsp;用同样的方法得到测试集上所有文本在1000维上的数值，不过不删除都为0的文本  
+![Image text](https://raw.github.com/cjjloves/Homework7/master/pictures/7.JPG)  
+&emsp;&emsp;后续处理：在最终的测试文本与训练文本比较的过程中，因为训练文本中的某些文本在1000维上的数值都为0，影响分类效果，所以将1000维上数值都为0的训练文本删除  
+&emsp;&emsp;用同样的方法得到测试集上所有文本在1000维上的数值，不过不删除都为0的文本  
 ### 2.2 对测试文本的前处理
 &emsp;&emsp;在对测试文本处理的过程中，发现其因为篇幅短小的原因，造成含有的词数较小，导致在1000维上的数值有很大可能性全为0  
 &emsp;&emsp;所以，我将同一个公司的所有新闻标题内容合并，当作一篇新闻处理
