@@ -12,10 +12,10 @@
 得到结果部分截图如下  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/NB_wordsum.JPG)  
 ### 1.2 遇到的问题
-&emsp;&emsp;在实际处理的过程中，因为每一属性对应的词的出现次数在三类中有约三分之一为0，所以对于每一类而言，有三分之一的P（-xj|Yi）值为0  
+&emsp;&emsp;在实际处理的过程中，因为每一属性对应的词的出现次数在三类中有约三分之一为0，所以对于每一类而言，有三分之一的P（-xj | Yi）值为0  
 &emsp;&emsp;结合测试集向量中的高稀疏性，很可能导致因为测试文本向量在三个类的概率乘积都为0而无法分类  
-&emsp;&emsp;所以对P（xj|Yi）和P（-xj|Yi）的数值进行调整，P（xj|Yi）= 1/2 + xj对应词出现的文本数/Yi类所有文本数；P（-xj|Yi）= 1 - P（xj|Yi）  
-&emsp;&emsp;MapReduce最终输出结果为<类别_维度标号,[P（xj|Yi）  P（-xj|Yi）]>  
+&emsp;&emsp;所以对P（xj | Yi）和P（-xj | Yi）的数值进行调整，P（xj | Yi）= 1/2 + xj属性对应词在Yi类中出现的文本数/Yi类所有文本数；P（-xj | Yi）= 1 - P（xj | Yi）  
+&emsp;&emsp;MapReduce最终输出结果为<类别_维度标号,[P（xj | Yi）  P（-xj | Yi）]>  
 输出结果截图  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/p_result.JPG)  
 ## 2 对测试文本向量进行分类
