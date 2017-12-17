@@ -26,7 +26,7 @@
 分类结果截图  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/NB_result.JPG) 
 ### 2.2 遇到的问题
-&emsp;&emsp;在实际p与P（xj | Yi）或P（-xj | Yi）相乘的过程中，由于P（xj | Yi）和P（-xj | Yi）的数值都小于1，所以当多个P（xj | Yi）或P（-xj | Yi）相乘会让最终p值趋于0，所以实际相乘过程中对于每一个P（xj | Yi）或P（-xj | Yi）与p相乘，再乘以2保证最终结果不趋于0而易于比较
+&emsp;&emsp;在实际p与P（xj | Yi）或P（-xj | Yi）相乘的过程中，由于P（xj | Yi）和P（-xj | Yi）的数值都小于1，所以多个P（xj | Yi）或P（-xj | Yi）相乘会让最终p值趋于0，所以实际相乘过程中对于每一个P（xj | Yi）或P（-xj | Yi）与p相乘，再乘以2保证最终结果不趋于0而易于比较
 ## 3 存在的不足和可能的改进之处
 ### 3.1 存在的不足
 &emsp;&emsp;由于该程序的处理数据方法与KNN程序相似，所以改程序KNN程序中含有的问题  
