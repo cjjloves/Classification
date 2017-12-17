@@ -4,7 +4,7 @@
 &emsp;&emsp;2 probabilities_process.java利用1中得到的键值对，计算出每一类的每一位度的P（xj | Yi）和P（-xj | Yi），输出键值对<类别_维度标号，[P（xj | Yi） P（-xj | Yi）]>  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/probabilities_process.JPG)  
 &emsp;&emsp;3 probabilities_process_2.java对2中得到的键值对进行特殊处理，防止其过多P（xj | Yi）的数值为0，输出键值对<类别_维度标号，[P（xj | Yi） P（-xj | Yi）]>  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/probabilities_process_2.JPG)  
+![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/probabilities_process.JPG)  
 &emsp;&emsp;4 testset_class.java利用KNN中得到的测试集文本向量和3中得到的键值对，对测试集文本向量进行分类，输出键值对<[公司编号，公司名称],类别>  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/testset_class.JPG)  
 &emsp;&emsp;5 test.java得到分类频率  
