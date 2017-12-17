@@ -55,6 +55,6 @@ sentence=sentence.replaceAll("[^\u4e00-\u9fa5]", "");
 #### 3.2.2 改进算法串行部分
 &emsp;&emsp;或许可以尝试更少的维度来提高处理速度，但更少的维度可能会导致分类结果的精确性降低
 #### 3.2.3 实现一键式输出结果
-&emsp;&emsp;利用Driver将所有的MapReduce连接起来，但是在该程序中，由于MapReduce程序过多，我已经忘了每个程序之间具体的关联性了
+&emsp;&emsp;利用Driver将所有的MapReduce连接起来
 #### 3.2.4 增加从键盘输入参数解决扩展性不足问题
 &emsp;&emsp;可以利用从键盘输入参数解决程序扩展性不足问题，但需要对所有MapReduce的指定数值进行替代
