@@ -9,7 +9,7 @@
 &emsp;&emsp;1.4 Sort_word.java对1.3得到的键值对按照Gain值进行从大到小排序，输出键值对<word,Gain>  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/Sort_word.JPG)  
 &emsp;&emsp;1.5 select_word.java取1.4中前1000个键值对  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/select_word.JPG)  
+![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/Sort_word.JPG)  
 ## 2 权重赋值
 &emsp;&emsp;2.1 Tfidf_apearsum.java利用1.1，得到整个训练集所有词的出现次数，输出键值对<word,frequency>  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/Tfidf_apearsum.JPG)  
@@ -33,4 +33,4 @@
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/get_result.JPG)  
 ## 3 分类比例
 &emsp;&emsp;3.1 test.java输出类结果  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/test.JPG)  
+![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/test_KNN.JPG)  
