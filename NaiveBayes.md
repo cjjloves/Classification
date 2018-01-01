@@ -16,7 +16,7 @@
 ### 2.1 分类逻辑
 &emsp;&emsp;分类材料利用KNN中得到的测试集文本向量，将1.1中得到的P(Yi)、P（xj | Yi）和P（-xj | Yi）存入DistributedCache中  
 &emsp;&emsp;Map过程计算每一类的概率。设定三个Double类p值为1，对于测试集文本向量中每一维属性，若数值为0，则分别找到三类相应位置的P（-xj | Yi），分别将三个p与P（-xj | Yi）相乘；若数值不为0，则分别找到三类相应位置的P（xj | Yi），分别将三个p与P（xj | Yi）相乘。最后，将三个p分别与P(Yi)相乘，比较三个p的大小，取最大p值对应的类作为该文本的类。输出<[公司标号  公司名称]，所属类别>  
-&emsp;&emsp;分类结果：positive（54%）、neutral（26%）、negative（20%），原因在于:negative类训练集数据只含有1000个词中的550个左右，导致1000维属性中有大约45%的属性的P（-xj | Yi）值为1，其比例比positive类（39%）和neutral类（37%）都高。在测试集文本向量为稀疏向量的情况下，每个测试集文本更偏向negative类  
+&emsp;&emsp;分类结果：positive（22%）、neutral（16%）、negative（62%），原因在于:negative类训练集数据只含有1000个词中的550个左右，导致1000维属性中有大约45%的属性的P（-xj | Yi）值为1，其比例比positive类（39%）和neutral类（37%）都高。在测试集文本向量为稀疏向量的情况下，每个测试集文本更偏向negative类  
 分类结果截图  
 ![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/NB_result1.JPG) 
 ### 2.2 遇到的问题
