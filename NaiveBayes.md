@@ -27,14 +27,4 @@
 &emsp;&emsp;另外，在进行测试集文本向量分类的过程中，需要对每一维属性找到对应位置的P（xj | Yi）和P（-xj | Yi），本程序是将维度的标号与分布存贮中的键值对<类别_维度标号,[P（xj | Yi）  P（-xj | Yi）]>中的维度标号比较，若标号相同，则根据该维度上的权值获取对应的P（xj | Yi）或P（-xj | Yi）。该过程使得程序对于每一个维度属性需要最多进行三千次比较，严重增大了程序的处理时间
 ### 3.2 可能的改进之处
 &emsp;&emsp;对于多次比较的问题，可以再通过一次MapReduce对键值对<类别_维度标号,[P（xj | Yi）  P（-xj | Yi）]> 按照维度标号从小到大进行排序，这种处理方法使得每一维度无需再寻找对应的位置，减少了不必要的比较
-# 代码说明
-&emsp;&emsp;1 get_probabilities.java利用KNN方法得到1000维属性，得到每一维属性上对应词在每一类上出现的次数，输出键值对<类别_维度标号，对应词在该类别中出现的次数>  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/get_probabilities.JPG)  
-&emsp;&emsp;2 probabilities_process.java利用1中得到的键值对，计算出每一类的每一位度的P（xj | Yi）和P（-xj | Yi），输出键值对<类别_维度标号，[P（xj | Yi） P（-xj | Yi）]>  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/probabilities_process.JPG)  
-&emsp;&emsp;3 probabilities_process_2.java对2中得到的键值对进行特殊处理，防止其过多P（xj | Yi）的数值为0，输出键值对<类别_维度标号，[P（xj | Yi） P（-xj | Yi）]>  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/probabilities_process.JPG)  
-&emsp;&emsp;4 testset_class.java利用KNN中得到的测试集文本向量和3中得到的键值对，对测试集文本向量进行分类，输出键值对<[公司编号，公司名称],类别>  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/testset_class.JPG)  
-&emsp;&emsp;5 test.java得到分类频率  
-![Image text](https://raw.github.com/cjjloves/Project2/master/pro2_pic/test_NB.JPG)  
+
